@@ -4,28 +4,38 @@ from flask import Flask, render_template, jsonify, abort, request
 app = Flask(__name__)
 
 # ---------------------------------------------------------------------------
-# Project data — edit this list to add / update your portfolio projects
+# Project data — edit PROJECTS to add / update your portfolio entries.
+# Each project supports both zh and en fields for bilingual display.
 # ---------------------------------------------------------------------------
 PROJECTS = [
     {
         "id": 1,
         "title": "個人作品集網站",
+        "title_en": "Personal Portfolio Website",
         "subtitle": "Flask + Vanilla JS 響應式個人網站",
+        "subtitle_en": "Flask + Vanilla JS Responsive Personal Site",
         "tags": ["Python", "Flask", "HTML/CSS", "JavaScript"],
-        "description": "使用 Flask 框架建立的個人作品集網站，採用儀表板風格，支援響應式布局。",
-        "details": (
-            "這個網站本身就是一個展示專案！使用 Python Flask 作為後端，搭配原生 "
-            "HTML、CSS 與 JavaScript，不依賴 React 或 Vue 等重型框架。採用深色冷色系設計，"
-            "模態視窗取代分頁切換，提供流暢的使用體驗，並部署在 Railway 上。"
-        ),
+        "description": "使用 Flask 框架建立的個人作品集網站，儀表板風格設計，支援中英雙語切換與響應式布局。",
+        "description_en": "A personal portfolio built with Flask featuring a dashboard layout, bilingual support, and full responsive design.",
+        "details": "使用 Python Flask 作為後端，搭配原生 HTML、CSS 與 JavaScript，不依賴 React 或 Vue 等重型框架。採用深色冷色系設計，模態視窗取代分頁切換，支援中英雙語切換，並部署在 Railway 上。",
+        "details_en": "Built with Python Flask as the backend and vanilla HTML, CSS, and JavaScript — no heavy frameworks. Features a dark cool-tone design, modal-based project viewer (no new tabs), bilingual (zh/en) toggle, and is deployed on Railway.",
         "highlights": [
             "響應式設計 (RWD)，完整支援手機、平板與桌機",
             "儀表板風格，點擊專案以模態視窗展示，無需開啟新分頁",
+            "中英雙語一鍵切換",
             "Flask RESTful API 架構",
             "安全標頭防護（CSP、X-Frame-Options、XSS Filter）",
             "一鍵部署至 Railway",
         ],
-        "github": "https://github.com",
+        "highlights_en": [
+            "Fully responsive (RWD) across mobile, tablet, and desktop",
+            "Dashboard-style layout with modal-based project viewer",
+            "One-click bilingual toggle (Chinese / English)",
+            "Flask RESTful API architecture",
+            "Security headers: CSP, X-Frame-Options, XSS Filter",
+            "One-click deployment to Railway",
+        ],
+        "github": "https://github.com/srwang721tw/my-portfolio",
         "demo": "#",
         "status": "completed",
         "year": "2025",
@@ -33,18 +43,16 @@ PROJECTS = [
     {
         "id": 2,
         "title": "專案名稱",
+        "title_en": "Project Name",
         "subtitle": "填入專案副標題或技術棧",
-        "tags": ["Python", "API", "資料工程"],
-        "description": "在這裡填入你的專案簡介（約 50–80 字）。說明這個專案解決了什麼問題。",
-        "details": (
-            "這是預留的作品集模板。在 app.py 中的 PROJECTS 列表新增你的專案資訊，"
-            "包含標題、副標題、標籤、簡介、詳細描述、GitHub 連結等欄位。"
-        ),
-        "highlights": [
-            "功能亮點 1",
-            "功能亮點 2",
-            "功能亮點 3",
-        ],
+        "subtitle_en": "Add your project subtitle or tech stack",
+        "tags": ["Python", "API"],
+        "description": "在這裡填入你的專案簡介（約 50–80 字）。",
+        "description_en": "Add your project description here (about 50–80 words).",
+        "details": "這是預留的作品集模板。在 app.py 中的 PROJECTS 列表新增你的專案資訊。",
+        "details_en": "This is a placeholder. Add your project info to the PROJECTS list in app.py.",
+        "highlights": ["功能亮點 1", "功能亮點 2", "功能亮點 3"],
+        "highlights_en": ["Feature highlight 1", "Feature highlight 2", "Feature highlight 3"],
         "github": "#",
         "demo": "#",
         "status": "in-progress",
@@ -53,11 +61,16 @@ PROJECTS = [
     {
         "id": 3,
         "title": "未來專案",
+        "title_en": "Future Project",
         "subtitle": "計畫中的下一個作品",
+        "subtitle_en": "Next project in planning",
         "tags": ["TBD"],
-        "description": "這裡可以放置計畫中但尚未開始的專案，先佔位，完成後再補充詳細內容。",
-        "details": "規劃中的專案。完成後請更新 app.py 中的資料，並將 status 改為 completed。",
+        "description": "這裡可以放置計畫中但尚未開始的專案。",
+        "description_en": "Placeholder for a project that is planned but not yet started.",
+        "details": "規劃中的專案，完成後請更新 app.py 中的資料。",
+        "details_en": "Project in planning. Update the data in app.py when completed.",
         "highlights": ["待規劃"],
+        "highlights_en": ["To be determined"],
         "github": "#",
         "demo": "#",
         "status": "planned",

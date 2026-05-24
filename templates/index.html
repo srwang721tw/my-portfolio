@@ -1,40 +1,56 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh" class="lang-zh">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="個人作品集 — 展示我的程式專案與技術能力" />
-  <title>Portfolio</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="王世儒 Shih Ju Wang — 個人作品集 Personal Portfolio"/>
+  <title>王世儒 · Portfolio</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
 </head>
 <body>
 
   <!-- ========== Mobile Header ========== -->
   <header class="mobile-header">
     <div class="mobile-logo">
-      <div class="avatar avatar-sm">YN</div>
-      <span class="mobile-name">Your Name</span>
+      <img class="avatar avatar-sm" src="{{ url_for('static', filename='img/avatar.svg') }}" alt="王世儒" id="mobileAvatarBtn"/>
+      <span class="mobile-name">王世儒</span>
     </div>
-    <button class="hamburger" id="hamburger" aria-label="開啟選單" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="mobile-right">
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="zh">中</button>
+        <span class="lang-div">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="開啟選單" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
 
-  <!-- Sidebar backdrop (mobile) -->
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
   <!-- ========== Sidebar ========== -->
   <nav class="sidebar" id="sidebar" aria-label="主要導覽">
     <div class="sidebar-inner">
 
-      <!-- Profile -->
+      <!-- Avatar (click → About) -->
+      <!-- To use your own photo: replace avatar.svg with avatar.jpg in static/img/ -->
       <div class="profile">
-        <div class="avatar">YN</div>
-        <h1 class="profile-name">Your Name</h1>
-        <p class="profile-title">Full-Stack Developer</p>
+        <button class="avatar-btn" id="avatarBtn" aria-label="回到個人簡介">
+          <img class="avatar" src="{{ url_for('static', filename='img/avatar.svg') }}" alt="王世儒"/>
+        </button>
+        <h1 class="profile-name">
+          <span class="zh-only">王世儒</span>
+          <span class="en-only">Shih Ju Wang</span>
+        </h1>
+        <p class="profile-title">
+          <span class="zh-only">規劃專員 · 資料科學家</span>
+          <span class="en-only">Analyst · Data Scientist</span>
+        </p>
         <div class="profile-badge">
           <span class="pulse-dot"></span>
-          Open to opportunities
+          <span class="zh-only">開放機會</span>
+          <span class="en-only">Open to Opportunities</span>
         </div>
       </div>
 
@@ -45,7 +61,8 @@
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
             </svg>
-            個人簡介
+            <span class="zh-only">個人簡介</span>
+            <span class="en-only">About</span>
           </a>
         </li>
         <li>
@@ -54,20 +71,28 @@
               <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
               <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
             </svg>
-            作品集
+            <span class="zh-only">作品集</span>
+            <span class="en-only">Portfolio</span>
           </a>
         </li>
       </ul>
 
+      <!-- Lang toggle (desktop) -->
+      <div class="lang-toggle lang-toggle-sidebar">
+        <button class="lang-btn active" data-lang="zh">中文</button>
+        <span class="lang-div">|</span>
+        <button class="lang-btn" data-lang="en">English</button>
+      </div>
+
       <!-- Social -->
       <div class="social-links">
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link">
+        <a href="https://github.com/srwang721tw" target="_blank" rel="noopener noreferrer" class="social-link">
           <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15">
             <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
           </svg>
           GitHub
         </a>
-        <a href="mailto:your@email.com" class="social-link">
+        <a href="mailto:srwang721@gmail.com" class="social-link">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
             <polyline points="22,6 12,13 2,6"/>
@@ -85,32 +110,58 @@
     </div>
   </nav>
 
-  <!-- ========== Main Content ========== -->
+  <!-- ========== Main ========== -->
   <main class="main-content">
 
-    <!-- ---- About Section ---- -->
+    <!-- ======== About ======== -->
     <section id="about" class="section active">
 
+      <!-- Hero -->
       <div class="hero">
-        <p class="hero-eyebrow">嗨，歡迎來到我的網站</p>
-        <h2 class="hero-title">我是 <span class="gradient-text">Your Name</span></h2>
-        <p class="hero-subtitle">Full-Stack Developer &amp; Problem Solver</p>
-        <p class="hero-bio">
-          熱愛用程式解決實際問題的開發者，專注於後端架構設計與資料工程。
-          喜歡鑽研新技術，相信好的程式碼應該既可讀又高效。
+        <p class="hero-eyebrow">
+          <span class="zh-only">嗨，歡迎來到我的網站</span>
+          <span class="en-only">Hi, welcome to my site</span>
+        </p>
+        <h2 class="hero-title">
+          <span class="zh-only">我是 <span class="gradient-text">王世儒</span></span>
+          <span class="en-only">I'm <span class="gradient-text">Shih Ju Wang</span></span>
+        </h2>
+        <p class="hero-subtitle">
+          <span class="zh-only">電力產業規劃 · 資料科學 · 程式開發</span>
+          <span class="en-only">Energy Planning · Data Science · Development</span>
+        </p>
+        <p class="hero-bio zh-only">
+          台灣電力公司電價制度規劃專員，國立政治大學資訊科學碩士。熱愛用程式與資料解決實際問題，專注於機器學習、資料分析與 Python 開發。
+        </p>
+        <p class="hero-bio en-only">
+          Electricity pricing specialist at Taiwan Power Company and M.S. in Computer Science from National Chengchi University. Passionate about solving real-world problems with data and code, focusing on machine learning, data analysis, and Python development.
         </p>
       </div>
 
+      <!-- Technical Skills (Frontend → Backend → Tools) -->
       <div class="content-card">
         <h3 class="card-heading">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17">
             <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
           </svg>
-          技術能力
+          <span class="zh-only">技術能力</span>
+          <span class="en-only">Technical Skills</span>
         </h3>
         <div class="skills-grid">
           <div class="skill-group">
-            <p class="skill-group-label">後端</p>
+            <p class="skill-group-label">
+              <span class="zh-only">前端</span><span class="en-only">Frontend</span>
+            </p>
+            <div class="tag-row">
+              <span class="tag tag-purple">HTML</span>
+              <span class="tag tag-purple">CSS</span>
+              <span class="tag tag-purple">JavaScript</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <p class="skill-group-label">
+              <span class="zh-only">後端</span><span class="en-only">Backend</span>
+            </p>
             <div class="tag-row">
               <span class="tag tag-blue">Python</span>
               <span class="tag tag-blue">Flask</span>
@@ -119,15 +170,9 @@
             </div>
           </div>
           <div class="skill-group">
-            <p class="skill-group-label">前端</p>
-            <div class="tag-row">
-              <span class="tag tag-purple">HTML</span>
-              <span class="tag tag-purple">CSS</span>
-              <span class="tag tag-purple">JavaScript</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <p class="skill-group-label">工具 &amp; 其他</p>
+            <p class="skill-group-label">
+              <span class="zh-only">工具 &amp; 其他</span><span class="en-only">Tools &amp; Others</span>
+            </p>
             <div class="tag-row">
               <span class="tag tag-teal">Git</span>
               <span class="tag tag-teal">Docker</span>
@@ -138,55 +183,251 @@
         </div>
       </div>
 
+      <!-- Professional Expertise -->
       <div class="content-card">
         <h3 class="card-heading">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17">
-            <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
           </svg>
-          工作經歷
+          <span class="zh-only">專業能力</span>
+          <span class="en-only">Professional Expertise</span>
         </h3>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="tl-dot"></div>
-            <div class="tl-body">
-              <div class="tl-header">
-                <span class="tl-title">職位名稱</span>
-                <span class="tl-period">2023 — 現在</span>
-              </div>
-              <p class="tl-company">公司名稱</p>
-              <p class="tl-desc">在此描述你的工作職責與主要成就。</p>
+        <div class="expertise-grid">
+          <div class="expertise-item">
+            <div class="expertise-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="expertise-title">Python</h4>
+              <p class="expertise-sub">pandas · numpy · matplotlib</p>
             </div>
           </div>
-          <div class="timeline-item">
-            <div class="tl-dot"></div>
-            <div class="tl-body">
-              <div class="tl-header">
-                <span class="tl-title">實習工程師</span>
-                <span class="tl-period">2022</span>
-              </div>
-              <p class="tl-company">公司名稱</p>
-              <p class="tl-desc">在此描述實習期間的工作內容。</p>
+          <div class="expertise-item">
+            <div class="expertise-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
+                <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="expertise-title">
+                <span class="zh-only">機器學習</span><span class="en-only">Machine Learning</span>
+              </h4>
+              <p class="expertise-sub">scikit-learn · XGBoost · LSTM</p>
+            </div>
+          </div>
+          <div class="expertise-item">
+            <div class="expertise-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="expertise-title">Prompt Engineering</h4>
+              <p class="expertise-sub">
+                <span class="zh-only">LLM 應用 · RAG · Claude / GPT API</span>
+                <span class="en-only">LLM Apps · RAG · Claude / GPT API</span>
+              </p>
+            </div>
+          </div>
+          <div class="expertise-item">
+            <div class="expertise-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
+                <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="expertise-title">
+                <span class="zh-only">網路爬蟲</span><span class="en-only">Web Scraping</span>
+              </h4>
+              <p class="expertise-sub">BeautifulSoup · Selenium · requests</p>
+            </div>
+          </div>
+          <div class="expertise-item">
+            <div class="expertise-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
+                <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/>
+                <line x1="6" y1="20" x2="6" y2="14"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="expertise-title">
+                <span class="zh-only">資料分析與視覺化</span><span class="en-only">Data Analysis &amp; Viz</span>
+              </h4>
+              <p class="expertise-sub">pandas · Plotly · Power BI</p>
+            </div>
+          </div>
+          <div class="expertise-item">
+            <div class="expertise-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
+                <path d="M9 19v-6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2zm0 0V9a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v10m-6 0a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2m0 0V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2z"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="expertise-title">
+                <span class="zh-only">統計分析</span><span class="en-only">Statistical Analysis</span>
+              </h4>
+              <p class="expertise-sub">
+                <span class="zh-only">迴歸 · 時間序列 · 假設檢定</span>
+                <span class="en-only">Regression · Time Series · Hypothesis Testing</span>
+              </p>
             </div>
           </div>
         </div>
       </div>
 
+      <!-- Work Experience -->
       <div class="content-card">
         <h3 class="card-heading">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17">
-            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
           </svg>
-          學歷
+          <span class="zh-only">工作經歷</span><span class="en-only">Work Experience</span>
         </h3>
         <div class="timeline">
           <div class="timeline-item">
             <div class="tl-dot"></div>
             <div class="tl-body">
               <div class="tl-header">
-                <span class="tl-title">資訊工程學系</span>
-                <span class="tl-period">2019 — 2023</span>
+                <span class="tl-title">
+                  <span class="zh-only">電價制度規劃專員</span>
+                  <span class="en-only">Electricity Pricing Specialist</span>
+                </span>
+                <span class="tl-period">
+                  <span class="zh-only">2025.5 — 現在</span>
+                  <span class="en-only">May 2025 — Present</span>
+                </span>
               </div>
-              <p class="tl-company">某某大學</p>
+              <p class="tl-company">
+                <span class="zh-only">台灣電力公司 · 業務處</span>
+                <span class="en-only">Taiwan Power Company · Business Division</span>
+              </p>
+              <p class="tl-desc zh-only">負責電價制度規劃與分析，研擬電費費率政策，進行用電數據分析以支援決策。</p>
+              <p class="tl-desc en-only">Responsible for electricity tariff planning and analysis, formulating rate policies, and conducting power consumption data analysis to support decision-making.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-dot"></div>
+            <div class="tl-body">
+              <div class="tl-header">
+                <span class="tl-title">
+                  <span class="zh-only">用電分析專員</span>
+                  <span class="en-only">Power Consumption Analyst</span>
+                </span>
+                <span class="tl-period">
+                  <span class="zh-only">2019.3 — 2025.5</span>
+                  <span class="en-only">Mar 2019 — May 2025</span>
+                </span>
+              </div>
+              <p class="tl-company">
+                <span class="zh-only">台灣電力公司 · 業務處</span>
+                <span class="en-only">Taiwan Power Company · Business Division</span>
+              </p>
+              <p class="tl-desc zh-only">負責用電資料分析、負載預測與統計報告，協助開發內部資料分析工具，推動部門數位化轉型。</p>
+              <p class="tl-desc en-only">Responsible for power consumption data analysis, load forecasting, and statistical reporting. Assisted in developing internal data tools and drove digital transformation within the division.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="content-card">
+        <h3 class="card-heading">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+          <span class="zh-only">學歷</span><span class="en-only">Education</span>
+        </h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="tl-dot"></div>
+            <div class="tl-body">
+              <div class="tl-header">
+                <span class="tl-title">
+                  <span class="zh-only">資訊科學系 碩士</span>
+                  <span class="en-only">M.S. in Computer Science</span>
+                </span>
+                <span class="tl-period">
+                  <span class="zh-only">2023.9 — 2025.7</span>
+                  <span class="en-only">Sep 2023 — Jul 2025</span>
+                </span>
+              </div>
+              <p class="tl-company">
+                <span class="zh-only">國立政治大學</span>
+                <span class="en-only">National Chengchi University</span>
+              </p>
+              <p class="tl-desc">
+                <span class="zh-only">主修：資料科學、生物資訊</span>
+                <span class="en-only">Focus: Data Science &amp; Bioinformatics</span>
+              </p>
+              <a href="https://hdl.handle.net/11296/4g5h64"
+                 target="_blank" rel="noopener noreferrer"
+                 class="thesis-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+                </svg>
+                <span class="zh-only">碩士論文</span>
+                <span class="en-only">Master's Thesis</span>
+              </a>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-dot"></div>
+            <div class="tl-body">
+              <div class="tl-header">
+                <span class="tl-title">
+                  <span class="zh-only">統計學系 學士</span>
+                  <span class="en-only">B.S. in Statistics</span>
+                </span>
+                <span class="tl-period">
+                  <span class="zh-only">2011.9 — 2015.6</span>
+                  <span class="en-only">Sep 2011 — Jun 2015</span>
+                </span>
+              </div>
+              <p class="tl-company">
+                <span class="zh-only">國立政治大學</span>
+                <span class="en-only">National Chengchi University</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MBTI -->
+      <!-- Update YOUR_MBTI_TYPE below with your actual MBTI (e.g. INTJ, ENFP...) -->
+      <div class="content-card mbti-card">
+        <h3 class="card-heading">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17">
+            <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
+          </svg>
+          <span class="zh-only">個性特質</span><span class="en-only">Personality</span>
+        </h3>
+        <div class="mbti-body">
+          <div class="mbti-type">INTJ</div>  <!-- ← 改成你的 MBTI 類型 -->
+          <div class="mbti-info">
+            <p class="mbti-name">
+              <span class="zh-only">建築師型</span>
+              <span class="en-only">The Architect</span>
+            </p>  <!-- ← 同步改名稱 -->
+            <p class="mbti-desc zh-only">獨立、分析型思維，擅長長遠規劃與系統性解決問題。對完美主義的執著讓我在工程上力求嚴謹，同時保持開放學習的心態。</p>
+            <p class="mbti-desc en-only">Independent and analytical, with a strength in long-term planning and systematic problem-solving. A perfectionist streak drives engineering rigor while staying open to continuous learning.</p>
+            <div class="mbti-traits">
+              <span class="tag tag-purple">
+                <span class="zh-only">策略思考</span><span class="en-only">Strategic</span>
+              </span>
+              <span class="tag tag-blue">
+                <span class="zh-only">自主學習</span><span class="en-only">Self-driven</span>
+              </span>
+              <span class="tag tag-teal">
+                <span class="zh-only">系統性</span><span class="en-only">Systematic</span>
+              </span>
+              <span class="tag tag-purple">
+                <span class="zh-only">重視品質</span><span class="en-only">Quality-focused</span>
+              </span>
             </div>
           </div>
         </div>
@@ -194,20 +435,23 @@
 
     </section>
 
-    <!-- ---- Portfolio Section ---- -->
+    <!-- ======== Portfolio ======== -->
     <section id="portfolio" class="section">
       <div class="section-header">
-        <h2 class="section-title">作品集</h2>
-        <p class="section-sub">點擊專案卡片查看詳細內容</p>
+        <h2 class="section-title">
+          <span class="zh-only">作品集</span><span class="en-only">Portfolio</span>
+        </h2>
+        <p class="section-sub">
+          <span class="zh-only">點擊專案卡片查看詳細內容</span>
+          <span class="en-only">Click a project card to view details</span>
+        </p>
       </div>
-
       <div class="projects-grid">
         {% for p in projects %}
         <article class="project-card"
                  data-id="{{ p.id }}"
-                 role="button"
-                 tabindex="0"
-                 aria-label="查看 {{ p.title }} 詳情">
+                 role="button" tabindex="0"
+                 aria-label="{{ p.title }}">
           <div class="pc-header">
             <div class="pc-icon-wrap">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18">
@@ -216,15 +460,22 @@
               </svg>
             </div>
             <span class="status-badge status-{{ p.status }}">
-              {%- if p.status == 'completed' -%}完成
-              {%- elif p.status == 'in-progress' -%}進行中
-              {%- else -%}計畫中
-              {%- endif -%}
+              <span class="zh-only">{%- if p.status == 'completed' -%}完成{%- elif p.status == 'in-progress' -%}進行中{%- else -%}計畫中{%- endif -%}</span>
+              <span class="en-only">{%- if p.status == 'completed' -%}Completed{%- elif p.status == 'in-progress' -%}In Progress{%- else -%}Planned{%- endif -%}</span>
             </span>
           </div>
-          <h3 class="pc-title">{{ p.title }}</h3>
-          <p class="pc-subtitle">{{ p.subtitle }}</p>
-          <p class="pc-desc">{{ p.description }}</p>
+          <h3 class="pc-title">
+            <span class="zh-only">{{ p.title }}</span>
+            <span class="en-only">{{ p.title_en }}</span>
+          </h3>
+          <p class="pc-subtitle">
+            <span class="zh-only">{{ p.subtitle }}</span>
+            <span class="en-only">{{ p.subtitle_en }}</span>
+          </p>
+          <p class="pc-desc">
+            <span class="zh-only">{{ p.description }}</span>
+            <span class="en-only">{{ p.description_en }}</span>
+          </p>
           <div class="pc-tags">
             {% for tag in p.tags[:3] %}
             <span class="tag tag-sm">{{ tag }}</span>
@@ -235,7 +486,10 @@
           </div>
           <div class="pc-footer">
             <span class="pc-year">{{ p.year }}</span>
-            <span class="pc-cta">查看詳情 →</span>
+            <span class="pc-cta">
+              <span class="zh-only">查看詳情 →</span>
+              <span class="en-only">View Details →</span>
+            </span>
           </div>
         </article>
         {% endfor %}
@@ -244,7 +498,7 @@
 
   </main>
 
-  <!-- ========== Project Modal ========== -->
+  <!-- ========== Modal ========== -->
   <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
     <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <button class="modal-close" id="modalClose" aria-label="關閉">
