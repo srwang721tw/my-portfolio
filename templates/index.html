@@ -12,7 +12,7 @@
   <!-- ========== Mobile Header ========== -->
   <header class="mobile-header">
     <div class="mobile-logo">
-      <img class="avatar avatar-sm" src="{{ url_for('static', filename='img/avatar.svg') }}" alt="王世儒" id="mobileAvatarBtn"/>
+      <img class="avatar avatar-sm" src="{{ url_for('static', filename='img/avatar.png') }}" alt="王世儒" id="mobileAvatarBtn"/>
       <span class="mobile-name">王世儒</span>
     </div>
     <div class="mobile-right">
@@ -37,7 +37,7 @@
       <!-- To use your own photo: replace avatar.svg with avatar.jpg in static/img/ -->
       <div class="profile">
         <button class="avatar-btn" id="avatarBtn" aria-label="回到個人簡介">
-          <img class="avatar" src="{{ url_for('static', filename='img/avatar.svg') }}" alt="王世儒"/>
+          <img class="avatar" src="{{ url_for('static', filename='img/avatar.png') }}" alt="王世儒"/>
         </button>
         <h1 class="profile-name">
           <span class="zh-only">王世儒</span>
@@ -164,8 +164,16 @@
                 <span class="zh-only">台灣電力公司 · 業務處</span>
                 <span class="en-only">Taiwan Power Company · Business Division</span>
               </p>
-              <p class="tl-desc zh-only">主導電費費率制度研究與政策分析，依市場趨勢及用電結構研擬費率調整方案，提供政策建議以支援業務決策。</p>
-              <p class="tl-desc en-only">Lead research and policy analysis on electricity tariff structures; develop rate adjustment proposals based on market trends and consumption patterns; deliver recommendations to support executive-level decision-making.</p>
+              <ul class="tl-bullets zh-only">
+                <li>主導電費費率制度研究與政策分析</li>
+                <li>依市場趨勢及用電結構研擬費率調整方案</li>
+                <li>提供政策建議以支援業務決策</li>
+              </ul>
+              <ul class="tl-bullets en-only">
+                <li>Lead research and policy analysis on electricity tariff structures</li>
+                <li>Develop rate adjustment proposals based on market trends and consumption patterns</li>
+                <li>Deliver recommendations to support executive-level decision-making</li>
+              </ul>
             </div>
           </div>
           <div class="timeline-item">
@@ -185,8 +193,18 @@
                 <span class="zh-only">台灣電力公司 · 業務處</span>
                 <span class="en-only">Taiwan Power Company · Business Division</span>
               </p>
-              <p class="tl-desc zh-only">開發需量反應即時計算工具以精確追蹤節電績效；建置並維護高壓用戶 AMI 資料庫；深入分析用電數據並以視覺化方式呈現洞察；協同管理台電用戶服務入口網站。</p>
-              <p class="tl-desc en-only">Built a real-time calculation tool for tracking demand response performance; developed and maintained the AMI database for high-voltage commercial customers; conducted in-depth power consumption analysis with data visualization; co-managed the Taiwan Power customer service portal.</p>
+              <ul class="tl-bullets zh-only">
+                <li>開發需量反應即時計算工具，精確追蹤節電績效</li>
+                <li>建置並維護高壓用戶 AMI 資料庫</li>
+                <li>深入分析用電數據並以視覺化方式呈現洞察</li>
+                <li>協同管理台電用戶服務入口網站</li>
+              </ul>
+              <ul class="tl-bullets en-only">
+                <li>Built a real-time calculation tool for tracking demand response performance</li>
+                <li>Developed and maintained the AMI database for high-voltage commercial customers</li>
+                <li>Conducted in-depth power consumption analysis with data visualization</li>
+                <li>Co-managed the Taiwan Power customer service portal</li>
+              </ul>
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 # my-portfolio
 
-Shih Ju Wang's personal portfolio website.
+My personal portfolio website.
 
-For details, visit the live site: https://srwang721tw.github.io/my-portfolio
+Live site: https://srwang721tw.up.railway.app
