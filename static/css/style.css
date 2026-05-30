@@ -331,6 +331,14 @@ html.lang-en .zh-only { display: none !important; }
 .tl-company { font-size: 0.8rem; color: var(--accent); margin-bottom: 0.3rem; }
 .tl-desc    { font-size: 0.83rem; color: var(--text2); line-height: 1.6; }
 
+.tl-thesis-title {
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--text3);
+  line-height: 1.55;
+  font-style: italic;
+}
+
 .thesis-link {
   display: inline-flex; align-items: center; gap: 0.35rem;
   margin-top: 0.5rem; font-size: 0.78rem; font-weight: 500;
