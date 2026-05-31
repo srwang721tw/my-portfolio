@@ -193,8 +193,9 @@ html.lang-en .zh-only { display: none !important; }
   display: none; position: fixed; inset: 0;
   background: rgba(0, 0, 0, 0.6); z-index: 99;
   opacity: 0; transition: opacity var(--ease-slow);
+  pointer-events: none;
 }
-.sidebar-overlay.visible { opacity: 1; }
+.sidebar-overlay.visible { opacity: 1; pointer-events: auto; }
 
 .hamburger { display: flex; flex-direction: column; gap: 5px; padding: 8px; }
 .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: var(--ease); }
@@ -492,7 +493,7 @@ html.lang-en .zh-only { display: none !important; }
 @media (max-width: 768px) {
   .mobile-header { display: flex; }
   .sidebar-overlay { display: block; }
-  .sidebar { transform: translateX(-100%); z-index: 150; }
+  .sidebar { transform: translateX(-100%); z-index: 250; }
   .sidebar.open { transform: translateX(0); }
   .lang-toggle-sidebar { display: none; } /* hidden in sidebar on mobile — shown in header instead */
   .main-content { margin-left: 0; padding: 1.25rem; padding-top: calc(var(--topbar-h) + 1.25rem); }
